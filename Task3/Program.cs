@@ -4,10 +4,12 @@
 */
 double [] CreatArrey ()
 {
-    double [] newArrey = new int [size];
+    Console.WriteLine ("Input size of arrey: ");
+    int size = Convert.ToInt32(Console.ReadLine());
+    double [] newArrey = new double [size];
     for (int i = 0; i < size; i++)
     {
-        newArrey[i] = new Random().NextDouble();
+        newArrey[i] = new Random().NextDouble() * 100;
     }
     return newArrey;
 }
@@ -19,28 +21,34 @@ void ShowArrey (double [] arreyToShow)
 }
 double MaxElem (double [] elemMax)
 {
-    double max = 0;
+    double max = elemMax[0];
     for (int i = 1; i < elemMax.Length; i++)
+    {
         if (elemMax[i] > max)
         max = elemMax[i];
-    Console.Write ($"Maximum: {max}");
+        else max = elemMax[0];
+    }
+    Console.WriteLine ($"Maximum: {max}");
     return max;
 }
 double MinElem (double [] elemMin)
 {
-    double min = 0;
+    double min = elemMin[0];
     for (int i = 1; i < elemMin.Length; i++)
-        if (elemMin[i] > min)
+    {
+        if (elemMin[i] < min)
         min = elemMin[i];
-    Console.Write ($"Minimum: {min}");
+        else
+        min = elemMin[0];
+    }
+    Console.WriteLine ($"Minimum: {min}");
     return min;
 }
 
-Console.WriteLine ("Input size of arrey: ");
-int sizeArr = Convert.ToInt32(Console.ReadLine());
+
 double [] finArrey = CreatArrey();
 ShowArrey (finArrey);
-MaxElem (finArrey);
-MinElem (finArrey);
-double diff = MaxElem (finArrey) - MinElem (finArrey);
- Console.Write ($"difference between maximum and minimum is: {diff}");
+double maxx = MaxElem (finArrey);
+double minn = MinElem (finArrey);
+double diff = maxx - minn;
+ Console.WriteLine ($"difference between maximum and minimum is: {diff}");
