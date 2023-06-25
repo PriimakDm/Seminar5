@@ -21,7 +21,7 @@ int SumElem (int [] elemSum)
 {
     int sum = 0;
     for (int i = 0; i < elemSum.Length; i++)
-        if (elemSum[i] % 10 == 0)
+        if (elemSum[i] % 2 == 0)
         sum++;
     Console.Write ($"number of even elements: {sum}");
     return sum;
